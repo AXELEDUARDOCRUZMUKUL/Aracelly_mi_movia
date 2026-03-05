@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cartita de Amor</title>
+    <style>
+        /* ----------------- CSS ----------------- */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card-container {
+            text-align: center;
+        }
+
+        .love-card {
+            font-size: 5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .love-card:hover {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        .photos {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .photos img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="love-card" id="loveCard">💌</div>
+        <div class="message" id="message">¡TE AMOO CON TODO MI CORAZÓN! ❤️</div>
+        <div class="photos" id="photosContainer"></div>
+    </div>
+
+    <script>
+        // ----------------- JavaScript -----------------
+        const loveCard = document.getElementById('loveCard');
+        const photosContainer = document.getElementById('photosContainer');
+
+        // Lista de imágenes (pon tus fotos en la misma carpeta o en subcarpeta 'images')
+        const photos = [
+            'images/foto1.jpg',
+            'images/foto2.jpg',
+            'images/foto3.jpg',
+            'images/foto4.jpg',
+            'images/foto5.jpg'
+        ];
+
+        loveCard.addEventListener('click', () => {
+            // Limpiar contenido previo
+            photosContainer.innerHTML = '';
+            
+            // Agregar fotos
+            photos.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                photosContainer.appendChild(img);
+            });
+
+            // Mostrar contenedor con transición
+            photosContainer.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
